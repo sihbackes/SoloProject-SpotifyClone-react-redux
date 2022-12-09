@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 const SideBar = () => {
   return (
     <div class="left-nav">
       <div className="logo">
-        <a href="homepage.html">
+        <Link to={"/"}>
           <img
             src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
             alt=""
           />
-        </a>
+        </Link>
       </div>
       <ul class="nav-pages py-2">
-        <a href="homepage.html">
+        <Link to={"/"}>
           <li class="d-flex align-items-center px-3 selected">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,9 +26,9 @@ const SideBar = () => {
             </svg>
             <span class="nav-page-text px-2">Home</span>
           </li>
-        </a>
+        </Link>
 
-        <a href="search.html">
+        <Link to={"search"}>
           <li class="d-flex align-items-center px-3">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +42,7 @@ const SideBar = () => {
             </svg>
             <span class="nav-page-text px-2">Search</span>
           </li>
-        </a>
+        </Link>
 
         <li class="d-flex align-items-center your-library px-3">
           <svg
@@ -95,15 +97,18 @@ const SideBar = () => {
         </li>
       </ul>
       <ul class="nav-playlist py-2">
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
-        <li class="px-3">Random Song</li>
+        <li class="px-3">This Is Miley Cyrus</li>
+        <li class="px-3">This Is Bon Jovi</li>
+        <li class="px-3">This Is Evanescence</li>
+        <li class="px-3">This Is Green Day</li>
+        <li class="px-3">This Is Beyonce</li>
+        <li class="px-3">This Is Gloria Groove</li>
+        <li class="px-3">This Is Nando Reis</li>
+        <li class="px-3">This Is Aerosith</li>
+        <li class="px-3">This Is Lizzo</li>
+        <li class="px-3">This Is Pearl Jam</li>
+        <li class="px-3">This Is Ed Sheeran</li>
+        <li class="px-3">This Is Simple Plan</li>
       </ul>
     </div>
   );

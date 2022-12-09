@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataAction } from "../redux/actions";
-import { Row, Form, Card } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const SearchComponent = () => {
   const [query, setQuery] = useState(" ");
@@ -13,6 +13,10 @@ const SearchComponent = () => {
   const listOfResults = dataRedux.data;
   console.log(listOfResults);
 
+  useEffect(() => {
+    dispatch(getDataAction("aerosmith"));
+  }, []);
+
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
@@ -21,32 +25,84 @@ const SearchComponent = () => {
     e.preventDefault();
     dispatch(getDataAction(query));
   };
-
   return (
-    <>
-      <Row>
-        <Form onSubmit={handleSubmit}>
-          <Form.Control
-            type="search"
-            value={query}
-            onChange={handleChange}
-            placeholder="Type and press Enter"
-          />
-        </Form>
-      </Row>
-      {listOfResults && (
-        <>
-          {listOfResults.map((element) => (
-            <Card style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={element.album.cover} />
-              <Card.Body>
-                <Card.Title>{element.title}</Card.Title>
-              </Card.Body>
-            </Card>
-          ))}
-        </>
-      )}
-    </>
+    <div class="center-section-search flex-shrink-1">
+      <div class="center-nav-bar px-35 py-2">
+        <div class="btns-prev-next">
+          <img class="img-btn" src="img/prev.svg" alt="" />
+
+          <img class="img-btn" src="img/next.svg" alt="" />
+        </div>
+        <div class="search-bar">
+          <div class="search-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewbox="0 0 16 16"
+            >
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </div>
+          <Form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              value={query}
+              onChange={handleChange}
+              placeholder="What do you want to listen to?"
+            />
+          </Form>
+        </div>
+        <div class="user-name-div text-white">
+          <span class="user-name-image px-1">
+            <i class="bi bi-person-circle"></i>
+          </span>
+          <span class="user-name-text px-1">User Name</span>
+        </div>
+      </div>
+
+      <div class="browse-all-section">
+        <h2 class="px-35">Browse All</h2>
+        <div class="browse-all row mx-1">
+          {listOfResults && (
+            <>
+              {listOfResults.map((element) => (
+                <div class="col-sm-6 col-md-4 col-xl-2">
+                  <div class="recently-played-cards card mb-3">
+                    <img
+                      src={element.album.cover}
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="recently-played-card-body card-body">
+                      <p class="card-text p-cards-title">
+                        {element.album.title}
+                      </p>
+                      <p class="card-text">{element.title.name}</p>
+                    </div>
+                    <button class="green-player-btn-rp">
+                      <svg
+                        id="rp-play"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        fill="currentColor"
+                        class="bi bi-play-circle-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
