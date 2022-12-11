@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SideBar = () => {
+  const favorites = useSelector((state) => state.favorites.favorites);
+  console.log(favorites);
+
   return (
     <div className="left-nav">
       <div className="logo">
@@ -97,7 +101,11 @@ const SideBar = () => {
         </li>
       </ul>
       <ul className="nav-playlist py-2">
-        <li className="px-3">This Is Miley Cyrus</li>
+        {favorites.map((element) => (
+          <li className="px-3">{element}</li>
+        ))}
+
+        {/* <li className="px-3">This Is Miley Cyrus</li>
         <li className="px-3">This Is Bon Jovi</li>
         <li className="px-3">This Is Evanescence</li>
         <li className="px-3">This Is Green Day</li>
@@ -108,7 +116,7 @@ const SideBar = () => {
         <li className="px-3">This Is Lizzo</li>
         <li className="px-3">This Is Pearl Jam</li>
         <li className="px-3">This Is Ed Sheeran</li>
-        <li className="px-3">This Is Simple Plan</li>
+        <li className="px-3">This Is Simple Plan</li> */}
       </ul>
     </div>
   );

@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 
 const FooterComponent = () => {
   const playMusic = useSelector((state) => state.play.playMusic);
-  console.log(playMusic);
 
   return (
     <div className="wrapper2">

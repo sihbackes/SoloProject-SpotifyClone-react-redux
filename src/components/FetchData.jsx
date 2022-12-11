@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { PlayMusicAction } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  PlayMusicAction,
+  RemoveFromFavoritesAction,
+  AddToFavoritesAction,
+} from "../redux/actions";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const FetchComponent = ({ artist }) => {
   const dispatch = useDispatch();
-
   const [results, setResults] = useState([]);
+  const favorites = useSelector((state) => state.favorites.favorites);
 
   useEffect(() => {
     const options = {
@@ -40,8 +45,32 @@ const FetchComponent = ({ artist }) => {
             <img src={element.album.cover} className="card-img-top" alt="..." />
             <div className="recently-played-card-body card-body">
               <p className="card-text p-cards-title">{element.album.title}</p>
+
               <p className="card-text">{element.artist.name}</p>
+              <p className="card-text">{element.album.title}</p>
             </div>
+            <div>
+              {!favorites.includes(element.album.title) ? (
+                <AiOutlineHeart
+                  color="#1cdf63"
+                  size={20}
+                  className="favorites-heart"
+                  onClick={() => {
+                    dispatch(AddToFavoritesAction(element.album.title));
+                  }}
+                />
+              ) : (
+                <AiFillHeart
+                  color="#1cdf63"
+                  size={20}
+                  className="favorites-heart"
+                  onClick={() => {
+                    dispatch(RemoveFromFavoritesAction(element.album.title));
+                  }}
+                />
+              )}
+            </div>
+
             <button
               className="green-player-btn-rp"
               onClick={() => {

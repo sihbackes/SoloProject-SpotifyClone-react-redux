@@ -1,5 +1,7 @@
 export const GET_DATA = "GET_DATA";
 export const PLAY_MUSIC = "PLAY_MUSIC";
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
+export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
 
 export const getDataAction = (query) => {
   return async (dispatch) => {
@@ -33,5 +35,19 @@ export const PlayMusicAction = (music, artist, cover) => {
   return {
     type: PLAY_MUSIC,
     payload: { music, artist, cover },
+  };
+};
+
+export const AddToFavoritesAction = (music) => {
+  return {
+    type: ADD_TO_FAVORITES,
+    payload: music,
+  };
+};
+
+export const RemoveFromFavoritesAction = (music) => {
+  return {
+    type: REMOVE_FROM_FAVORITES,
+    payload: music,
   };
 };
