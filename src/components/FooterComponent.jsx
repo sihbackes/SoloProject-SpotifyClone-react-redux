@@ -9,10 +9,7 @@ const FooterComponent = () => {
       <div className="now-playing">
         <div className="song-details d-flex align-items-center ml-3">
           <div className="mini-song-album px-3">
-            <img
-              src="https://i.scdn.co/image/ab67616d0000b27307744e2ed983efa3e6620a47"
-              alt=""
-            />
+            <img src={playMusic.cover} alt="" />
           </div>
           <div className="title-wrapper">
             <div className="song-info px-3">

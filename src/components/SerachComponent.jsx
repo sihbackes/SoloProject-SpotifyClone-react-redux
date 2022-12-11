@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataAction } from "../redux/actions";
 import { Form } from "react-bootstrap";
+import { PlayMusicAction } from "../redux/actions";
 
 const SearchComponent = () => {
   const [query, setQuery] = useState(" ");
@@ -82,7 +83,18 @@ const SearchComponent = () => {
                       </p>
                       <p className="card-text">{element.title.name}</p>
                     </div>
-                    <button className="green-player-btn-rp">
+                    <button
+                      className="green-player-btn-rp"
+                      onClick={() => {
+                        dispatch(
+                          PlayMusicAction(
+                            element.album.title,
+                            element.artist.name,
+                            element.album.cover
+                          )
+                        );
+                      }}
+                    >
                       <svg
                         id="rp-play"
                         xmlns="http://www.w3.org/2000/svg"
