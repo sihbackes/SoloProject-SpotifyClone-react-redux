@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataAction } from "../redux/actions";
 import { Form } from "react-bootstrap";
-import { PlayMusicAction } from "../redux/actions";
+import {
+  PlayMusicAction,
+  RemoveFromFavoritesAction,
+  AddToFavoritesAction,
+} from "../redux/actions";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const SearchComponent = () => {
   const [query, setQuery] = useState(" ");
 
   const dispatch = useDispatch();
-
+  const favorites = useSelector((state) => state.favorites.favorites);
   const dataRedux = useSelector((state) => state.query.queryList);
   //the query on the line above came from the bigReducer on the store component
   const listOfResults = dataRedux.data;
@@ -82,6 +87,30 @@ const SearchComponent = () => {
                         {element.album.title}
                       </p>
                       <p className="card-text">{element.title.name}</p>
+                      <p className="card-text">{element.album.title}</p>
+                    </div>
+                    <div>
+                      {!favorites.includes(element.album.title) ? (
+                        <AiOutlineHeart
+                          color="#1cdf63"
+                          size={20}
+                          className="favorites-heart"
+                          onClick={() => {
+                            dispatch(AddToFavoritesAction(element.album.title));
+                          }}
+                        />
+                      ) : (
+                        <AiFillHeart
+                          color="#1cdf63"
+                          size={20}
+                          className="favorites-heart"
+                          onClick={() => {
+                            dispatch(
+                              RemoveFromFavoritesAction(element.album.title)
+                            );
+                          }}
+                        />
+                      )}
                     </div>
                     <button
                       className="green-player-btn-rp"
