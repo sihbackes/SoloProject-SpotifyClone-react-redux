@@ -26,15 +26,15 @@ const SearchComponent = () => {
     dispatch(getDataAction(query));
   };
   return (
-    <div class="center-section-search flex-shrink-1">
-      <div class="center-nav-bar px-35 py-2">
-        <div class="btns-prev-next">
-          <img class="img-btn" src="img/prev.svg" alt="" />
+    <div className="center-section-search flex-shrink-1">
+      <div className="center-nav-bar px-35 py-2">
+        <div className="btns-prev-next">
+          <img className="img-btn" src="img/prev.svg" alt="" />
 
-          <img class="img-btn" src="img/next.svg" alt="" />
+          <img className="img-btn" src="img/next.svg" alt="" />
         </div>
-        <div class="search-bar">
-          <div class="search-icon">
+        <div className="search-bar">
+          <div className="search-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -55,41 +55,41 @@ const SearchComponent = () => {
             />
           </Form>
         </div>
-        <div class="user-name-div text-white">
-          <span class="user-name-image px-1">
-            <i class="bi bi-person-circle"></i>
+        <div className="user-name-div text-white">
+          <span className="user-name-image px-1">
+            <i className="bi bi-person-circle"></i>
           </span>
-          <span class="user-name-text px-1">User Name</span>
+          <span className="user-name-text px-1">User Name</span>
         </div>
       </div>
 
-      <div class="browse-all-section">
-        <h2 class="px-35">Browse All</h2>
-        <div class="browse-all row mx-1">
+      <div className="browse-all-section">
+        <h2 className="px-35">Browse All</h2>
+        <div className="browse-all row mx-1">
           {listOfResults && (
             <>
               {listOfResults.map((element) => (
-                <div class="col-sm-6 col-md-4 col-xl-2">
-                  <div class="recently-played-cards card mb-3">
+                <div className="col-sm-6 col-md-4 col-xl-2">
+                  <div className="recently-played-cards card mb-3">
                     <img
                       src={element.album.cover}
-                      class="card-img-top"
+                      className="card-img-top"
                       alt="..."
                     />
-                    <div class="recently-played-card-body card-body">
-                      <p class="card-text p-cards-title">
+                    <div className="recently-played-card-body card-body">
+                      <p className="card-text p-cards-title">
                         {element.album.title}
                       </p>
-                      <p class="card-text">{element.title.name}</p>
+                      <p className="card-text">{element.title.name}</p>
                     </div>
-                    <button class="green-player-btn-rp">
+                    <button className="green-player-btn-rp">
                       <svg
                         id="rp-play"
                         xmlns="http://www.w3.org/2000/svg"
                         width="32"
                         height="32"
                         fill="currentColor"
-                        class="bi bi-play-circle-fill"
+                        className="bi bi-play-circle-fill"
                         viewBox="0 0 16 16"
                       >
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />

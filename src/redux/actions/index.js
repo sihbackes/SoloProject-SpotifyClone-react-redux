@@ -1,4 +1,5 @@
 export const GET_DATA = "GET_DATA";
+export const PLAY_MUSIC = "PLAY_MUSIC";
 
 export const getDataAction = (query) => {
   return async (dispatch) => {
@@ -25,5 +26,12 @@ export const getDataAction = (query) => {
     } catch (err) {
       console.log(err.message);
     }
+  };
+};
+
+export const PlayMusicAction = (music, artist, cover) => {
+  return {
+    type: PLAY_MUSIC,
+    payload: { music, artist, cover },
   };
 };

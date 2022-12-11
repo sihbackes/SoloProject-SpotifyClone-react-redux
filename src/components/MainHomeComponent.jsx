@@ -9,7 +9,7 @@ const MainHome = () => {
         <SideBar />
         <HomepageContent />
       </div>
-      <div class="wrapper1">
+      <div className="wrapper1">
         <FooterComponent />
       </div>
     </>

@@ -8,7 +8,7 @@ const SearchPage = () => {
         <SideBar />
         <SearchComponent />
       </div>
-      <div class="wrapper1">
+      <div className="wrapper1">
         <FooterComponent />
       </div>
     </>

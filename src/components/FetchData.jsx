@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { PlayMusicAction } from "../redux/actions";
 
 const FetchComponent = ({ artist }) => {
+  const dispatch = useDispatch();
+
   const [results, setResults] = useState([]);
 
   useEffect(() => {
@@ -31,14 +35,25 @@ const FetchComponent = ({ artist }) => {
   return (
     <>
       {results.slice(0, 6).map((element) => (
-        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-          <div class="recently-played-cards card mb-3">
-            <img src={element.album.cover} class="card-img-top" alt="..." />
-            <div class="recently-played-card-body card-body">
-              <p class="card-text p-cards-title"></p>
-              <p class="card-text"></p>
+        <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2" key={element.id}>
+          <div className="recently-played-cards card mb-3">
+            <img src={element.album.cover} className="card-img-top" alt="..." />
+            <div className="recently-played-card-body card-body">
+              <p className="card-text p-cards-title">{element.album.title}</p>
+              <p className="card-text">{element.artist.name}</p>
             </div>
-            <button class="green-player-btn-rp">
+            <button
+              className="green-player-btn-rp"
+              onClick={() => {
+                dispatch(
+                  PlayMusicAction(
+                    element.album.title,
+                    element.artist.name,
+                    element.album.cover
+                  )
+                );
+              }}
+            >
               <svg
                 id="rp-play"
                 xmlns="http://www.w3.org/2000/svg"
